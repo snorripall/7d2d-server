@@ -58,8 +58,10 @@ FROM stage-server AS stage-mods
 COPY --from=mods --chown=steam:steam mods-group-0/ /server/Mods/
 COPY --from=mods --chown=steam:steam mods-group-1/ /server/Mods/
 COPY --from=mods --chown=steam:steam mods-group-2/ /server/Mods/
-# The Rebirth archive does not ship ModInfo.xml in zz_REBIRTH__Core_2_0, but 7DTD
-# ignores folders without one. Add a minimal descriptor so its Config/items.xml loads.
+COPY --from=mods --chown=steam:steam mods-group-3/ /server/Mods/
+# The Rebirth archive does not ship ModInfo.xml in zz_REBIRTH__Core_2_0. 7DTD v2.6
+# ignores folders without one, so generate a V2-format descriptor so its
+# Config/items.xml loads alongside the other Rebirth mods.
 RUN <<EOF
 set -e
 MISSING_MOD="/server/Mods/zz_REBIRTH__Core_2_0"
@@ -67,12 +69,12 @@ if [ -d "$MISSING_MOD" ] && [ ! -f "$MISSING_MOD/ModInfo.xml" ]; then
     cat > "$MISSING_MOD/ModInfo.xml" <<'MODINFO'
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
-    <ModInfo>
-        <Name value="zz_REBIRTH__Core_2_0" />
-        <Description value="Rebirth Core 2.0 config overrides" />
-        <Author value="Rebirth" />
-        <Version value="1.0.0" />
-    </ModInfo>
+    <Name value="zz_REBIRTH__Core_2_0" />
+    <DisplayName value="zz_REBIRTH__Core_2_0" />
+    <Description value="Rebirth Core 2.0 config overrides" />
+    <Author value="Rebirth" />
+    <Website value="" />
+    <Version value="1.0.0" />
 </xml>
 MODINFO
 fi
@@ -87,5 +89,5 @@ COPY entrypoint.sh /server/entrypoint.sh
 RUN chmod +x /server/entrypoint.sh
 ENTRYPOINT ["/server/entrypoint.sh"]
 
-# T9: Set USER steam
-USER steam
+# T9: Runtime user is handled by entrypoint.sh via gosu; do NOT set USER here.
+# The container starts as root to fix /data ownership, then drops to steam.
