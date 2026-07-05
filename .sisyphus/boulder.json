@@ -1,0 +1,41 @@
+{
+  "active_plan": "/home/snorri/gaming/7d2d-server/.sisyphus/plans/7dtd-rebirth-container.md",
+  "started_at": "2026-07-05T19:06:36.030Z",
+  "session_ids": [
+    "ses_0cc531d98ffeL3lt2CEPU3MzuI"
+  ],
+  "session_origins": {
+    "ses_0cc531d98ffeL3lt2CEPU3MzuI": "direct"
+  },
+  "plan_name": "7dtd-rebirth-container",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Verify game/mod version compatibility and measure source sizes",
+      "session_id": "ses_0cc5235acffeC5mEJBStFQppiP",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-07-05T19:12:46.420Z"
+    },
+    "todo:5": {
+      "task_key": "todo:5",
+      "task_label": "5",
+      "task_title": "Install SteamCMD and download v2.6 dedicated server into image",
+      "session_id": "ses_0cc444a2affe4EEh2MZMefvHOg",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-07-05T19:44:42.183Z"
+    },
+    "todo:7": {
+      "task_key": "todo:7",
+      "task_label": "7",
+      "task_title": "Add mod COPY layers to Dockerfile",
+      "session_id": "ses_0cc2f3874ffeIB5IMsKFIx67B0",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-07-05T20:15:49.054Z"
+    }
+  }
+}

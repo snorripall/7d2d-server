@@ -1,0 +1,33 @@
+# Environment secrets
+.env
+
+# Local runtime data (bind mounts or test data)
+data/
+saves/
+logs/
+config/
+
+# Archives and downloads
+*.zip
+*.tar.gz
+*.tar
+
+# OS and editor files
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Language tooling artifacts
+node_modules/
+__pycache__/
+*.pyc
+
+# Generated task evidence (kept locally, not committed)
+.sisyphus/evidence/
+
+# Temporary files
+*.tmp
+/tmp/

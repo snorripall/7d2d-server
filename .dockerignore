@@ -1,0 +1,45 @@
+# Git metadata
+.git
+.gitignore
+
+# Environment secrets
+.env
+
+# Local game data / saves
+Saves/
+saves/
+LocalSaveData/
+UserData/
+userdata/
+Data/Saves/
+Data/Worlds/
+
+# Logs
+Logs/
+logs/
+*.log
+
+# Cache / temp
+cache/
+Cache/
+tmp/
+temp/
+*.tmp
+
+# SteamCMD / Steam metadata
+steamcmd/
+.steam/
+Steam/
+steam_appid.txt
+
+# Mod archive (large, host-side only)
+REBIRTH*.zip
+
+# Evidence / task artifacts
+.sisyphus/evidence/
+
+# Host-generated files
+*.tar.gz
+*.tar
+.DS_Store
+Thumbs.db

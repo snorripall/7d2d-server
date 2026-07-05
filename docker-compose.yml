@@ -1,0 +1,27 @@
+services:
+  7dtd-rebirth:
+    image: snorripall/7dtd-rebirth:7dtd-2.6-b14-rebirth-20260702-2245
+    container_name: 7dtd-rebirth
+    env_file:
+      - .env
+    ports:
+      - "26900-26903:26900-26903/udp"
+      - "26900-26903:26900-26903/tcp"
+      # - "8080:8080/tcp"   # web dashboard
+      # - "8081:8081/tcp"   # telnet
+    volumes:
+      - 7dtd-saves:/data/saves
+      - 7dtd-logs:/data/logs
+      - 7dtd-config:/data/config
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 24G
+        reservations:
+          memory: 16G
+
+volumes:
+  7dtd-saves:
+  7dtd-logs:
+  7dtd-config:

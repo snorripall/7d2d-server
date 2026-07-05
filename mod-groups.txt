@@ -1,0 +1,63 @@
+# Rebirth mod group manifest
+# Generated: 2026-07-05T21:30:17+02:00
+# Source archive: /home/snorri/Downloads/REBIRTH EXPERIMENTAL 2026.07.02 2245 - 7dtd v2.6 b14.zip
+# Staging groups: /tmp/rebirth-groups
+
+[mods-group-0] total_bytes=5368698750 total_gib=5.000
+mods-group-0: 7D1.0_Izayo_WeaponpackRemastered_556pack
+mods-group-0: 7D1.0_Izayo_WeaponpackRemastered_762pack
+mods-group-0: 7D2.5_Izayo_WeaponFixes
+mods-group-0: DroneLockToPlayer
+mods-group-0: Locks
+mods-group-0: Rebirth_Weapon_Resource
+mods-group-0: zzz_REBIRTH__Core
+mods-group-0: zzzzVoltralux's POI Pack 1.0 (1.2)
+
+[mods-group-1] total_bytes=5368689656 total_gib=5.000
+mods-group-1: 7D1.0_Izayo_WeaponpackRemastered_45ACP
+mods-group-1: 7D1.0_Izayo_WeaponpackRemastered_9mmVAL
+mods-group-1: 7D1.0_Izayo_WeaponpackRemastered_Heavy_WeaponPack
+mods-group-1: 7D1.0_Izayo_WeaponpackVanillaReplacer
+mods-group-1: 7D2D-mod-utils
+mods-group-1: Morecrosshairs
+mods-group-1: PathSmoothing
+mods-group-1: TheDescent-cave-prefabs
+mods-group-1: VehicleMadness_Beta4_v5_V2.0
+mods-group-1: ZT-Industrial Resources
+mods-group-1: zzz_REBIRTH__Utils
+mods-group-1: zzzz_Alter_ArmorRacks
+mods-group-1: zzzz-CannonFodders POIs and Things
+mods-group-1: zzzzMPLogue_Prefabs_7D2D_v2_0_1
+mods-group-1: zzzzZZTong-Prefabs
+
+[mods-group-2] total_bytes=2509405089 total_gib=2.337
+mods-group-2: 0-Alter_OverrideSounds
+mods-group-2: 0-CustomParticleLoader
+mods-group-2: 0-Material Modifier
+mods-group-2: 0-Quartz
+mods-group-2: 0_TFP_Harmony
+mods-group-2: 7D1.0_Izayo_Visible_FPV_Gloves_mod
+mods-group-2: 7D1.0_Izayo_Visible_Mods_mod
+mods-group-2: 7D1.0_Izayo_WeaponpackRemastered_44mag
+mods-group-2: 7D1.0_Izayo_WeaponpackRemastered_DemolitionPack
+mods-group-2: 7D1.0_Izayo_WeaponpackRemastered_SHOTGUNpackVAL
+mods-group-2: DayCustomShaders
+mods-group-2: gupFireMod
+mods-group-2: TheDescent
+mods-group-2: TheDescent-cave-assets
+mods-group-2: TheDescent-cave-lights
+mods-group-2: ZZQuartz-MiniMap
+mods-group-2: zz_REBIRTH__Core_2_0
+mods-group-2: zzzz_LittleRedSonja_CAS
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack01_DangerGirls
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack02_VanillaReVamp
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack03_SomeTraders
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack04_GNSArmor
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack05_TactiGirls
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack06_ResidentEvil
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack07_TWD
+mods-group-2: zzzz_LittleRedSonja_Mumpfy_ArmorPack08_GoofyTime
+mods-group-2: zzzzVanilla Block POIs by FNS
+mods-group-2: zzzzz_LittleRedSonja Rebirth Addons
+mods-group-2: zzzzzzz_REBIRTH__Cleanup
+
