@@ -185,3 +185,33 @@
 - Restart policy: `unless-stopped`; memory limits: 24 GB limit / 16 GB reservation.
 - Validation: `docker compose -f /home/snorri/gaming/7d2d-server/docker-compose.yml config` exits 0 and lists all three named volumes.
 - Evidence captured in `.sisyphus/evidence/task-11-compose-valid.txt` and `.sisyphus/evidence/task-11-volumes.txt`.
+
+## Layer split fix: reduce COPY layers under 5 GiB
+
+- Problem: the original 3-group split produced uncompressed COPY layers of ~5.37 GB, ~5.39 GB, and ~2.51 GB, exceeding Docker Hub's safe 5 GB layer limit.
+- Solution: redistributed the 52 Rebirth mod folders into 4 groups using first-fit-decreasing bin packing with a 3.5 GiB per-group cap.
+- New groups (uncompressed file bytes):
+  - mods-group-0: 7 folders, 3,758,095,376 bytes (3.500 GiB)
+  - mods-group-1: 18 folders, 3,758,019,536 bytes (3.500 GiB)
+  - mods-group-2: 9 folders, 3,757,396,780 bytes (3.499 GiB)
+  - mods-group-3: 18 folders, 1,973,281,803 bytes (1.838 GiB)
+- Total: 52 folders, 13,246,793,495 bytes (12.337 GiB).
+- Files updated: `/home/snorri/gaming/7d2d-server/mod-groups.txt`, `/home/snorri/gaming/7d2d-server/Dockerfile`.
+- Dockerfile now has 4 COPY lines (`mods-group-0` through `mods-group-3`) into `/server/Mods/`; the `zz_REBIRTH__Core_2_0` ModInfo.xml generation step remains unchanged.
+- Verification: all 52 mod folders are included exactly once and every group is ≤3.5 GiB uncompressed, giving comfortable headroom under the 5 GB Docker Hub layer limit.
+- Note: the actual `/tmp/rebirth-groups/` tree on disk was rebuilt by re-extracting the source zip after an earlier partial cleanup removed folders; the final grouping was generated from a clean extraction.
+
+
+## Task 3 fix: serverconfig.xml.template v2.6 b14 compatibility
+
+- Rebased `/home/snorri/gaming/7d2d-server/serverconfig.xml.template` on `/tmp/serverconfig-v2.6-default.xml` extracted from the built image (`/server/serverconfig.xml`).
+- Removed the V 3.0.0-specific `WebDashboardPassword` property; v2.6 b14 only has `WebDashboardEnabled`, `WebDashboardPort`, and `WebDashboardUrl`.
+- Updated `.env.example` to remove the unused `WEB_DASHBOARD_PASSWORD` placeholder.
+- Retained runtime placeholders using `${VAR:-default}` syntax for envsubst-compatible hydration:
+  - `ServerName`, `ServerPassword`, `ServerPort`, `ServerVisibility`
+  - `GameWorld`, `GameName`
+  - `TelnetEnabled`, `TelnetPort`, `TelnetPassword`
+  - `WebDashboardEnabled`, `WebDashboardPort`
+- Forced `EACEnabled` to `false` and uncommented `UserDataFolder` with value `/data`.
+- Validated the rewritten template with `xmllint --noout` and confirmed it is well-formed.
+- Evidence captured in `.sisyphus/evidence/task-3-template-check-v2.txt` and `.sisyphus/evidence/task-3-xml-valid-v2.txt`.
