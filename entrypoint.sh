@@ -32,7 +32,9 @@ import os, re, sys
 def repl(match):
     var = match.group(1)
     default = match.group(2) if match.group(2) is not None else ""
-    return os.environ.get(var, default)
+    # Match shell ${VAR:-default} semantics: use default when unset OR empty.
+    value = os.environ.get(var)
+    return value if value else default
 
 with open(sys.argv[1], "r", encoding="utf-8") as f:
     text = f.read()

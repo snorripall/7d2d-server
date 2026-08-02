@@ -1,14 +1,17 @@
+# 7 Days to Die Rebirth dedicated server
+# Copy .env.example to .env and fill in your settings, then run: docker compose up -d
+
 services:
   7dtd-rebirth:
-    image: snorripall/7dtd-rebirth:7dtd-2.6-b14-rebirth-20260702-2245
+    image: ghcr.io/snorripall/7dtd-rebirth:7dtd-2.6-b14-rebirth-20260702-2245
     container_name: 7dtd-rebirth
     env_file:
       - .env
     ports:
       - "26900-26903:26900-26903/udp"
       - "26900-26903:26900-26903/tcp"
-      # - "8080:8080/tcp"   # web dashboard
-      # - "8081:8081/tcp"   # telnet
+      # - "8080:8080/tcp"   # web dashboard (set WEB_DASHBOARD_ENABLED=true)
+      # - "8081:8081/tcp"   # telnet (set TELNET_ENABLED=true)
     volumes:
       - 7dtd-saves:/data/saves
       - 7dtd-logs:/data/logs
