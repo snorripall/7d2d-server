@@ -66,12 +66,14 @@ RUN <<EOF
 set -e
 MISSING_MOD="/server/Mods/zz_REBIRTH__Core_2_0"
 if [ -d "$MISSING_MOD" ] && [ ! -f "$MISSING_MOD/ModInfo.xml" ]; then
+    # Name MUST differ from zzz_REBIRTH__Core's Name (also zz_REBIRTH__Core_2_0),
+    # or 7DTD ignores the real Core pack as a duplicate.
     cat > "$MISSING_MOD/ModInfo.xml" <<'MODINFO'
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
-    <Name value="zz_REBIRTH__Core_2_0" />
-    <DisplayName value="zz_REBIRTH__Core_2_0" />
-    <Description value="Rebirth Core 2.0 config overrides" />
+    <Name value="zz_REBIRTH__Core_2_0_Config" />
+    <DisplayName value="zz_REBIRTH__Core_2_0 Config" />
+    <Description value="Rebirth Core 2.0 config overrides (items.xml)" />
     <Author value="Rebirth" />
     <Website value="" />
     <Version value="1.0.0" />

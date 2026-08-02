@@ -1,0 +1,22 @@
+# Thin layer update on top of the existing Rebirth server image.
+# Avoids re-downloading 17GB of game files via SteamCMD.
+ARG BASE_IMAGE=ghcr.io/snorripall/7dtd-rebirth:7dtd-2.6-b14-rebirth-20260702-2245
+FROM ${BASE_IMAGE}
+
+USER root
+
+COPY updates/rebirth-utils-20260717/RebirthUtils.dll /server/Mods/zzz_REBIRTH__Utils/RebirthUtils.dll
+COPY updates/rebirth-utils-20260717/RebirthUtils.pdb /server/Mods/zzz_REBIRTH__Utils/RebirthUtils.pdb
+
+# Unique Name so zz_REBIRTH__Core_2_0 does not collide with zzz_REBIRTH__Core
+# (both originally claimed Name=zz_REBIRTH__Core_2_0, which made 7DTD skip Core).
+COPY updates/rebirth-utils-20260717/Core_2_0_ModInfo.xml /server/Mods/zz_REBIRTH__Core_2_0/ModInfo.xml
+
+RUN chown -R steam:steam \
+        /server/Mods/zzz_REBIRTH__Utils/RebirthUtils.dll \
+        /server/Mods/zzz_REBIRTH__Utils/RebirthUtils.pdb \
+        /server/Mods/zz_REBIRTH__Core_2_0/ModInfo.xml \
+    && chmod 644 \
+        /server/Mods/zzz_REBIRTH__Utils/RebirthUtils.dll \
+        /server/Mods/zzz_REBIRTH__Utils/RebirthUtils.pdb \
+        /server/Mods/zz_REBIRTH__Core_2_0/ModInfo.xml

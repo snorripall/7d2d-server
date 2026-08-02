@@ -3,7 +3,7 @@
 
 services:
   7dtd-rebirth:
-    image: ghcr.io/snorripall/7dtd-rebirth:7dtd-2.6-b14-rebirth-20260702-2245
+    image: ghcr.io/snorripall/7dtd-rebirth:7dtd-2.6-b14-rebirth-20260702-2245-utils20260717
     container_name: 7dtd-rebirth
     env_file:
       - .env
